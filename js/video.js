@@ -4,12 +4,14 @@ window.addEventListener("load", function() {
 	video = document.querySelector("#myVideo");
 });
 
+// Play video, update volume 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
 	let vol = document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 });
 
+// Pause video
 document.querySelector("#pause").addEventListener("click", function() {
 	console.log("Pause Video");
 	video.pause();
@@ -29,14 +31,39 @@ document.querySelector("#faster").addEventListener("click", function() {
 	console.log("New speed is " + playbackspeed);
 });
 
+// Mute + unmute audio and update button 
 document.querySelector("#mute").addEventListener("click", function() {
 	document.getElementById("mute").innerHTML = "Unmute";
 	let mute = document.querySelector("#mute").innerHTML = "Unmute";
 	video.muted = true;
 });
 
+// Update volume
 document.querySelector("#volumeSlider").addEventListener("click", function() {
 	console.log(this);
 	console.log(this.value);
 	let vol = document.querySelector("#volume").innerHTML = this.value + "%";
+});
+
+// Skip ahead 5 seconds, restart if close to end
+document.querySelector("#skip").addEventListener("click", function() {
+	let time = video.currentTime; 
+	if (time + 5 > video.duration) {
+		video.currentTime = 0;
+	}
+	else { 
+		video.currentTime = time + 5;
+	}
+});
+
+// Add old time style 
+document.querySelector("#old").addEventListener("click", function() {
+	console.log("Old School");
+	video.classList.add("oldTime");
+});
+
+// Convert back to original style
+document.querySelector("#original").addEventListener("click", function() {
+	console.log("Original");
+	video.classList.remove("oldTime");
 });
