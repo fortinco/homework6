@@ -33,7 +33,7 @@ document.querySelector("#faster").addEventListener("click", function() {
 
 // Mute + unmute audio and update button 
 document.querySelector("#mute").addEventListener("click", function() {
-	if (video.muted == false) {
+	if (video.muted === false) {
 		document.querySelector("mute").innerHTML = "Unmute";
 		video.muted = true;
 		console.log("Muted");
