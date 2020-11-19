@@ -33,16 +33,25 @@ document.querySelector("#faster").addEventListener("click", function() {
 
 // Mute + unmute audio and update button 
 document.querySelector("#mute").addEventListener("click", function() {
-	document.getElementById("mute").innerHTML = "Unmute";
-	let mute = document.querySelector("#mute").innerHTML = "Unmute";
-	video.muted = true;
+	if (video.muted == false) {
+		document.querySelector("mute").innerHTML = "Unmute";
+		video.muted = true;
+		console.log("Muted");
+	}
+	else {
+		video.muted = false;
+		document.querySelector("mute").innerHTML = "Mute";
+		console.log("Unmuted");
+	}
 });
 
 // Update volume
 document.querySelector("#volumeSlider").addEventListener("click", function() {
-	console.log(this);
 	console.log(this.value);
 	let vol = document.querySelector("#volume").innerHTML = this.value + "%";
+	let newVol = volumeSlider.value / 100;
+	video.volume = newVol;
+	document.querySelector("#volume").innerHTML = volumeSlider.value + "%";
 });
 
 // Skip ahead 5 seconds, restart if close to end
