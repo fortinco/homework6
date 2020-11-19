@@ -34,13 +34,13 @@ document.querySelector("#faster").addEventListener("click", function() {
 // Mute + unmute audio and update button 
 document.querySelector("#mute").addEventListener("click", function() {
 	if (video.muted === false) {
-		document.querySelector("mute").innerHTML = "Unmute";
 		video.muted = true;
+		document.querySelector("#mute").innerHTML = "Unmute";
 		console.log("Muted");
 	}
 	else {
 		video.muted = false;
-		document.querySelector("mute").innerHTML = "Mute";
+		document.querySelector("#mute").innerHTML = "Mute";
 		console.log("Unmuted");
 	}
 });
